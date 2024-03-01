@@ -13,9 +13,9 @@ namespace BulkyWeb.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() // returns the view of the same name as action (default)
         {
-            return View();
+            return View(); // but you can write here the name of view that will return
         }
 
         public IActionResult Privacy()
