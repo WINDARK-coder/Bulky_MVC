@@ -1,0 +1,41 @@
+﻿@model Category
+<form method="post">
+    <div class="border p-3 mt-4">
+        <input asp-for="Id" hidden /> @* if it is not written , it will get 0 id and because of it will create a new record of category *@
+        <div class="row pb-2">
+            <h2 class="text-primary">Delete Category</h2>
+            </hr>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="pb-1"></label> 
+            <input asp-for="Name" class="form-control" disabled />  
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="DisplayOrder" class="pb-1"></label>
+            <input asp-for="DisplayOrder" class="form-control" disabled />
+
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-danger form-control">Delete</button>
+
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary form-control border">
+                    Back to List
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+        // this part is for client side validation (with no refresh of a page)
+        // but page will be reloaded if you have any custom validations in controller
+    }
+}
