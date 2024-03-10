@@ -1,0 +1,47 @@
+﻿@page
+@model BulkyWebRazor_Temp.Pages.Categories.EditModel
+<form method="post">
+    <div class="border p-3 mt-4">
+        <input asp-for="Category.Id" hidden /> @* if it is not written , it will get 0 id and because of it will create a new record of category *@
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Category</h2>
+            </hr>
+        </div>
+        @* <div asp-validation-summary="All"></div> *@
+        @* if you write ModelOnly summary then it will show only validation that exists in controller(not model) that didnt match to some property *@
+        @* and if you write None it will not show the errors summary *@
+        <div class="mb-3 row p-1">
+            <label asp-for="Category.Name" class="pb-1"></label> @* you also can use asp-for in label to show its name *@
+            <input asp-for="Category.Name" class="form-control" />  @* when you write asp-for , then you dont need to write type of it *@
+            <span asp-validation-for="Category.Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 row p-1">
+            <label asp-for="Category.DisplayOrder" class="pb-1"></label>
+            <input asp-for="Category.DisplayOrder" class="form-control" />
+            <span asp-validation-for="Category.DisplayOrder" class="text-danger"></span>
+
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Update</button>
+
+            </div>
+            <div class="col-6 col-md-3">
+                <a asp-page="/Categories/Index" class="btn btn-outline-secondary form-control border">
+                    Back to List
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+        // this part is for client side validation (with no refresh of a page)
+        // but page will be reloaded if you have any custom validations in controller
+    }
+}
